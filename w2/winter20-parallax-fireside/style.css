@@ -1,0 +1,46 @@
+.parallax {
+  /* The image used */
+  /* using bg1-2-3 to get img urls */
+  
+  /* Set a specific height */
+/* using bootstrap class for height */
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#bg1{
+  background-image: url("https://www.gannett-cdn.com/presto/2019/04/24/USAT/bdc68f96-f162-4ec2-867d-e8284b87633f-c01_tweet_evans_1013.jpg?crop=2000,1331,x0,y0&width=2560");
+}
+#bg2{
+  background-image: url("https://media.comicbook.com/2019/03/bo-iron-man-1162005-1280x0.jpeg");
+}
+#bg3{
+  background-image: url("thor-wp.jpg");
+}
+
+#barrier1{
+  background: linear-gradient(.25turn, rgb(199, 74, 74), yellow)
+}
+
+#barrier2{
+  background: linear-gradient(.75turn, rgb(70, 135, 240), rgb(221, 60, 250))
+}
+#barrier3{
+  background: linear-gradient( rgb(199, 74, 74), rgb(159, 38, 230))
+}
+
+@media only screen and (max-width: 787px){
+  #bg2{
+    background-image: url("https://www.gannett-cdn.com/presto/2019/04/24/USAT/bdc68f96-f162-4ec2-867d-e8284b87633f-c01_tweet_evans_1013.jpg?crop=2000,1331,x0,y0&width=2560");
+  }
+  #bg3{
+    background-image: url("https://media.comicbook.com/2019/03/bo-iron-man-1162005-1280x0.jpeg");
+  }
+  #bg1{
+    background-image: url("thor-wp.jpg");
+  }
+}
