@@ -1,4 +1,5 @@
 import { ProxyState } from "../AppState.js";
+import Character from "../Models/Character.js";
 import {characterService} from "../Services/CharacterService.js"
 
 function _draw(){
@@ -9,8 +10,13 @@ function _draw(){
   `
 }
 
+//show that you can triggle multiple draw functions with proxystate.on
 function _anotherDrawFn(){
   console.log("a change happened and trigged multiple fns")
+}
+
+function resetGame(){
+  ProxyState.character = new Character('Timbo')
 }
 
 export default class CharacterController{
@@ -43,5 +49,12 @@ export default class CharacterController{
 
   attack(str){
     characterService.attack(str)
+
+  // if you want to reset the game you can do something like this
+  //  if( characterService.attack(str)){
+  //    if(window.confirm('YOU KILLED '+ ProxyState.character.name + ' Do you want to continue?')){
+  //      resetGame()
+  //    }
+  //  }
   }
 }

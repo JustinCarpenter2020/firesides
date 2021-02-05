@@ -9,6 +9,11 @@ class CharacterService{
     character.health = character.health < 0 ? 0 : character.health
     
     ProxyState.character = character
+
+    
+    //if you want to reset the game
+  //  return character.health == 0 ? true :  false
+    
   }
   // kick() {
   //   let character = ProxyState.character

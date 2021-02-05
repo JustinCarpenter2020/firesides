@@ -22,14 +22,12 @@ function draw(){
   </p>`
   // document.getElementById()
 }
+
+//throw this in just one draw function when you go to set it up
 function draw2(cChoice, pChoice){
   document.getElementById("play-zone").innerHTML = `
-  <p>
-  Player : ${pChoice}
-  </p>
-  <p>
-  Comp : ${cChoice}
-  </p>
+  <p>Player : ${pChoice}</p>
+  <p>Comp : ${cChoice}</p>
   `
 }
 
@@ -97,6 +95,7 @@ function play(input){
   draw()
   //draw function without passing the choices to display
   //then pass to function to display to user
+
   draw2(compChoice, input)
 }
 

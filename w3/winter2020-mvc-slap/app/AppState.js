@@ -9,7 +9,6 @@ class AppState extends EventEmitter {
 
   /**@type {Character} */
   character = new Character("Tim")
-  //@type is just labeling properties to give us intellisense to what exists in collection
 }
 
 export const ProxyState = new Proxy(new AppState(), {
