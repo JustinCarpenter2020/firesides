@@ -20,6 +20,17 @@ function draw(){
   document.getElementById("score-table").innerHTML = `<p>
  Wins : ${wins} - Losses: ${losses} - Ties : ${ties}
   </p>`
+  // document.getElementById()
+}
+function draw2(cChoice, pChoice){
+  document.getElementById("play-zone").innerHTML = `
+  <p>
+  Player : ${pChoice}
+  </p>
+  <p>
+  Comp : ${cChoice}
+  </p>
+  `
 }
 
 
@@ -84,6 +95,9 @@ function play(input){
 
 
   draw()
+  //draw function without passing the choices to display
+  //then pass to function to display to user
+  draw2(compChoice, input)
 }
 
 function compRandChoice(){
