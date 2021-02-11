@@ -1,20 +1,26 @@
-let choices = ["rock", "paper", "scissors", "lizard", "spock"]
 let wins = 0
 let losses = 0
 let ties = 0
+
+//only add choices when you are ready to randomly generate compChoice
+// let choices = ["rock", "paper", "scissors"]
+
+//only do winconditions when you are ready to dynamically compare choices
+//ie after basic if else setup is complete
 // let winConditions = {
 //   rock: "scissors",
 //   paper: "rock",
 //   scissors: "paper"
 // }
 
-let winConditions = {
-  rock: ["scissors", "lizard"],
-  paper: ["rock", "spock"],
-  scissors: ["paper", "lizard"],
-  lizard: ["paper", "spock"],
-  spock: ["rock", "scissors"]
-}
+//if expanding winConditions
+// let winConditions = {
+//   rock: ["scissors", "lizard"],
+//   paper: ["rock", "spock"],
+//   scissors: ["paper", "lizard"],
+//   lizard: ["paper", "spock"],
+//   spock: ["rock", "scissors"]
+// }
 
 function draw(){
   document.getElementById("score-table").innerHTML = `<p>
@@ -24,19 +30,20 @@ function draw(){
 }
 
 //throw this in just one draw function when you go to set it up
-function draw2(cChoice, pChoice){
-  document.getElementById("play-zone").innerHTML = `
-  <p>Player : ${pChoice}</p>
-  <p>Comp : ${cChoice}</p>
-  `
-}
+// add to normal draw function if time at end and want to display what is played
+// function draw2(cChoice, pChoice){
+//   document.getElementById("play-zone").innerHTML = `
+//   <p>Player : ${pChoice}</p>
+//   <p>Comp : ${cChoice}</p>
+//   `
+// }
 
 
 function play(input){
   // console.log(input)
   //hard coding comp choice is a good way to start out to test your logic
-  // let compChoice = "paper"
-  let compChoice = compRandChoice()
+  let compChoice = "paper"
+  // let compChoice = compRandChoice()
   console.log(compChoice, "comp choice", input, "playerchoice");
   //#region 
   // if(input == compChoice){
@@ -69,7 +76,7 @@ function play(input){
   // }
   //#endregion
 
-
+  //NOTE DICTIONARY WAY WITHOUT INCLUDES AND WITHOUT TERNARY
   // if(input == compChoice){
   //     console.log("Tie!")
   //     ties++
@@ -83,23 +90,24 @@ function play(input){
 
   //TERNARY
   // WHAT TO EVAL ? if truthy : if falsy
-  // input == compChoice ? ties++ : winConditions[input] == compChoice ? wins++ : losses++
+  input == compChoice ? ties++ : winConditionz[input] == compChoice ? wins++ : losses++
+
+
 // console.log(winConditions[input]);
-  input == compChoice ? ties++ : winConditions[input].includes(compChoice) ? wins++ : losses++
+  // input == compChoice ? ties++ : winConditions[input].includes(compChoice) ? wins++ : losses++
 
   // input == compChoice ? ties++ : winConditions[input].some(e=> e == compChoice) ? wins++ : losses++
-
 
 
 
   draw()
   //draw function without passing the choices to display
   //then pass to function to display to user
-
   draw2(compChoice, input)
 }
 
 function compRandChoice(){
+  
   return choices[Math.floor(Math.random()* choices.length)]
 }
 
