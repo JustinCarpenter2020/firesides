@@ -49,7 +49,7 @@ function varLoop(start, condition){
     role: 'Tester'
   }]
   
-//write a function that will take in an array of object, console log custom statements for each role:
+//write a function that will take in an array of objects, console log custom statements for each role:
 //Instruct role should say 'Welcome (role) (name).'
 //Admin role should say 'Welcome (role) (name), Have a great day.'
 //Any other role should say 'Not a codeworks employee.'

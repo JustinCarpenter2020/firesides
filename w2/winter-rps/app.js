@@ -3,7 +3,7 @@ let losses = 0
 let ties = 0
 
 //only add choices when you are ready to randomly generate compChoice
-// let choices = ["rock", "paper", "scissors"]
+let choices = ["rock", "paper", "scissors"]
 
 //only do winconditions when you are ready to dynamically compare choices
 //ie after basic if else setup is complete
@@ -26,7 +26,6 @@ function draw(){
   document.getElementById("score-table").innerHTML = `<p>
  Wins : ${wins} - Losses: ${losses} - Ties : ${ties}
   </p>`
-  // document.getElementById()
 }
 
 //throw this in just one draw function when you go to set it up
@@ -77,23 +76,23 @@ function play(input){
   //#endregion
 
   //NOTE DICTIONARY WAY WITHOUT INCLUDES AND WITHOUT TERNARY
-  // if(input == compChoice){
-  //     console.log("Tie!")
-  //     ties++
-  //   }else if(winConditions[input] == compChoice){
-  //     console.log("you win")
-  //     wins++
-  //   }else {
-  //     console.log("you lose")
-  //      losses++
-  //   }
+  if(input == compChoice){
+      console.log("Tie!")
+      ties++
+    }else if(winConditions[input] == compChoice){
+      console.log("you win")
+      wins++
+    }else {
+      console.log("you lose")
+       losses++
+    }
 
   //TERNARY
   // WHAT TO EVAL ? if truthy : if falsy
-  input == compChoice ? ties++ : winConditionz[input] == compChoice ? wins++ : losses++
+  // input == compChoice ? ties++ : winConditionz[input] == compChoice ? wins++ : losses++
 
 
-// console.log(winConditions[input]);
+  // console.log(winConditions[input]);
   // input == compChoice ? ties++ : winConditions[input].includes(compChoice) ? wins++ : losses++
 
   // input == compChoice ? ties++ : winConditions[input].some(e=> e == compChoice) ? wins++ : losses++
@@ -103,7 +102,7 @@ function play(input){
   draw()
   //draw function without passing the choices to display
   //then pass to function to display to user
-  draw2(compChoice, input)
+  // draw2(compChoice, input)
 }
 
 function compRandChoice(){
