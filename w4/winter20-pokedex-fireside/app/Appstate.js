@@ -11,6 +11,12 @@ wildPokemons = []
 myPokemons = []
 /** @type {Pokemon} */
 activePokemon = null
+
+next = null
+
+previous = null
+
+page = 1
 }
 
 export const ProxyState = new Proxy(new AppState(), {

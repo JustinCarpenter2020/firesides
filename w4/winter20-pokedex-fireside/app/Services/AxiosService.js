@@ -6,6 +6,6 @@ export const _pokeApi = axios.create({
 
 // @ts-ignore
 export const _bcwApi = axios.create({
-  baseURL: "//bcw-sandbox.herokuapp.com/api/classroom/",
+  baseURL: "https://bcw-sandbox.herokuapp.com/api/classroom/",
   timeout: 5000
 })

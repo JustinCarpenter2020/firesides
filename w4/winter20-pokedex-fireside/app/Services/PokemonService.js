@@ -2,6 +2,25 @@ import { ProxyState } from "../Appstate.js";
 import Pokemon from "../Models/Pokemon.js";
 import { _pokeApi , _bcwApi } from "./AxiosService.js"
 class PokemonService {
+  async changePage(keyword) {
+    if(keyword == "next"){
+      let res = await _pokeApi.get(ProxyState.next)
+      ProxyState.wildPokemons = res.data.results
+      ProxyState.next = res.data.next
+    ProxyState.previous = res.data.previous
+    ProxyState.page = ProxyState.page + 1
+    } else {
+      let res = await _pokeApi.get(ProxyState.previous)
+      ProxyState.wildPokemons = res.data.results
+      ProxyState.next = res.data.next
+    ProxyState.previous = res.data.previous
+    ProxyState.page = ProxyState.page - 1
+    }
+  }
+  async releasePokemon(pokemonId) {
+   await _bcwApi.delete("pokemon/" + pokemonId)
+   ProxyState.myPokemons = ProxyState.myPokemons.filter(pokemon => pokemon._id != pokemonId)
+  }
  
   constructor() {
     
@@ -11,6 +30,8 @@ class PokemonService {
     let res = await _pokeApi.get('pokemon?limit=151')
     console.log(res)
     ProxyState.wildPokemons = res.data.results
+    ProxyState.next = res.data.next
+    ProxyState.previous = res.data.previous
   }
 
   async getActivePokemon(pokeName) {

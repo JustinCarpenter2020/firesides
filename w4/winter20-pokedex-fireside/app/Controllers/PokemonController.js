@@ -12,6 +12,7 @@ function _drawWildPokemon() {
   ProxyState.wildPokemons.forEach(poke => template += Pokemon.WildPokemonTemplate(poke.name))
   let wildPokemon = document.getElementById('wild-pokemon')
   wildPokemon.innerHTML = template
+  document.getElementById('page-counter').innerHTML= ProxyState.page.toString()
 }
 
 function _drawActivePokemon() {
@@ -38,6 +39,8 @@ export default class PokemonController {
     ProxyState.on("activePokemon", _drawActivePokemon)
     
     ProxyState.on("myPokemons", _drawMyPokemon)
+
+    ProxyState.on("page", _drawWildPokemon)
   }
 
   getWildPokemon(){
@@ -72,6 +75,10 @@ export default class PokemonController {
 
   releasePokemon(pokemonId) {
     PokemonService.releasePokemon(pokemonId)
+  }
+
+  changePage(keyword){
+    PokemonService.changePage(keyword)
   }
 
 

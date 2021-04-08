@@ -1,5 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import { carService } from "../Services/CarService.js";
+import NotificationService from "../Services/NotificationService.js";
 
 
 //Private
@@ -38,6 +39,7 @@ getCars(){
     }
     try {
       carService.postCar(newCar)
+      NotificationService.toast("Car Created")
     } catch (error) {
       console.error(error)
     }
@@ -65,8 +67,9 @@ getCars(){
     $('#editCarModal-' + carId).modal('toggle')
   }
 
-  deleteCar(carId) {
+  async deleteCar(carId) {
     try {
+      if(await NotificationService.confirmAction("Are you sure? This car will be deleted"))
       carService.deleteCar(carId)
     } catch (error) {
       console.error(error)
