@@ -22,8 +22,8 @@ export default {
   name: 'Home',
   components: { CatComponent, ActiveFact },
   setup() {
-    onMounted(() =>
-      catService.getFacts())
+    onMounted(async() =>
+      await catService.getFacts())
     return {
       facts: computed(() => AppState.facts)
     }

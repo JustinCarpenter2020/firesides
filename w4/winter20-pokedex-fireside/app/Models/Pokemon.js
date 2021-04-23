@@ -59,6 +59,8 @@ export default class Pokemon {
     }
 
 
+
+    // we don't need an instance of a pokemon to use this function, refer to controller
     static WildPokemonTemplate(name) {
         return `
         <button class="btn btn-outline-success mx-0 my-0" onclick="app.pokemonController.getActivePokemon('${name}')">${name}</button>

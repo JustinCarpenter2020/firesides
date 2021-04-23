@@ -15,7 +15,7 @@ class PokemonService {
       ProxyState.next = res.data.next
     ProxyState.previous = res.data.previous
     ProxyState.page = ProxyState.page - 1
-    }
+    
   }
   async releasePokemon(pokemonId) {
    await _bcwApi.delete("pokemon/" + pokemonId)
@@ -30,6 +30,7 @@ class PokemonService {
     let res = await _pokeApi.get('pokemon?limit=151')
     console.log(res)
     ProxyState.wildPokemons = res.data.results
+    // do these later
     ProxyState.next = res.data.next
     ProxyState.previous = res.data.previous
   }
@@ -43,6 +44,7 @@ class PokemonService {
   async catchPokemon() {
     let pokeToCatch = ProxyState.activePokemon
     await _bcwApi.post("pokemon", pokeToCatch)
+    //ProxyState.myPokemon = [...ProxyStat.myPokemon, new Pokemon(poketoCatch)]
     this.getMyPokemon()
   }
   async getMyPokemon(){

@@ -2,7 +2,7 @@
   <div class="Cat card-container border-0 col-4 p-2 bg-transparent text-light py-5">
     <div class=" row justify-content-center">
       <div class="cat-image col-3 mr-0 pb-0">
-        <img :src="state.catImage + indexProp" class="img-fluid rounded">
+        <img :src="state.catImage + indexProps" class="img-fluid rounded">
       </div>
       <div class="col-10 bg-primary rounded shadow-sm p-3" @click="getBigFact(state.fact.id)">
         <div class="row">
@@ -13,7 +13,7 @@
             {{ state.fact.text }}
           </div>
           <div class="col-12">
-            <i v-for="(star, i) in state.fact.stars" :key="i" class="bi bi-star"></i>
+            <i v-for="(star, i) in state.fact.stars" class="bi bi-star" :key="i"></i>
           </div>
         </div>
       </div>
@@ -36,10 +36,10 @@ export default {
       catImage: ''
 
     })
-    function getBigFact(id) {
-      catService.getCatPicture()
+    async function getBigFact(id) {
+      await catService.getCatPicture()
       AppState.activeFact = state.fact
-      router.push({ path: '/facts/' + id })
+      router.push({ name: 'FactPage', params: { id: id } })
     }
     function getUniqueCat() {
       setTimeout(() => { state.catImage = 'https://thiscatdoesnotexist.com/?v= ' }, 1150 * props.indexProp - 1)

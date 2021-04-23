@@ -5,9 +5,9 @@ import { catNameGenerator, generateId } from './utils'
 class CatService {
   async getFacts() {
     try {
-      const res = await api.get('/facts?limit=100')
-      console.log('cat facts', res.data.data)
+      const res = await api.get('/facts?limit=2')
       AppState.facts = res.data.data.map(cat => new Cat(cat))
+      console.log(AppState.facts)
     } catch (err) {
       console.error(err)
     }

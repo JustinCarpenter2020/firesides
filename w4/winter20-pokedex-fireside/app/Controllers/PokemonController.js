@@ -1,5 +1,6 @@
 import { ProxyState } from "../Appstate.js";
 import Pokemon from "../Models/Pokemon.js";
+import NotificationService from "../Services/NotificationService.js";
 import PokemonService from "../Services/PokemonService.js";
 
 //Private
@@ -12,11 +13,11 @@ function _drawWildPokemon() {
   ProxyState.wildPokemons.forEach(poke => template += Pokemon.WildPokemonTemplate(poke.name))
   let wildPokemon = document.getElementById('wild-pokemon')
   wildPokemon.innerHTML = template
+  //do later
   document.getElementById('page-counter').innerHTML= ProxyState.page.toString()
 }
 
 function _drawActivePokemon() {
-  // @ts-ignore
   let activePokemon = document.getElementById("active-pokemon")
   activePokemon.innerHTML = ProxyState.activePokemon.ActivePokemonTemplate
 }
@@ -68,6 +69,7 @@ export default class PokemonController {
     try {
       
       PokemonService.catchPokemon()
+      NotificationService.toast(`Captured ${ProxyState.activePokemon.name}!`)
     } catch (error) {
       console.error(error)
     }
