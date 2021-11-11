@@ -19,20 +19,20 @@
 
 <script>
 import { AppState } from '../AppState'
-import { computed, onMounted, reactive } from 'vue'
-import { catService } from '../services/CatService'
+import { computed, onMounted } from 'vue'
+import { catsService } from '../services/CatsService'
 import { useRoute } from 'vue-router'
 export default {
   name: 'FactPage',
   setup() {
     const route = useRoute()
-    const state = reactive({
-
-    })
     onMounted(async() => {
-      catService.getFact(route.params.id)
+      catsService.getFact(route.params.id)
     })
-    return { state, fact: computed(() => AppState.activeFact), picture: computed(() => AppState.catPicture) }
+    return {
+      fact: computed(() => AppState.activeFact),
+      picture: computed(() => AppState.catPicture)
+    }
   }
 }
 </script>

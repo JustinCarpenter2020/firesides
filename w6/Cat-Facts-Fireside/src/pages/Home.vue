@@ -7,7 +7,7 @@
       </h2>
     </div>
     <div class="row p-5 ">
-      <CatComponent v-for="(fact, index ) in facts" :key="fact" :fact-prop="fact" :index-prop="index" />
+      <CatComponent v-for="(fact, index ) in facts" :key="fact" :fact="facts" :index="index" />
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@
 <script>
 import { AppState } from '../AppState'
 import { computed, onMounted } from 'vue'
-import { catService } from '../services/CatService'
+import { catsService } from '../services/CatsService'
 import CatComponent from '../components/CatComponent'
 import ActiveFact from '../components/ActiveFact'
 export default {
@@ -24,7 +24,7 @@ export default {
   components: { CatComponent, ActiveFact },
   setup() {
     onMounted(async() =>
-      await catService.getFacts())
+      await catsService.getFacts())
     return {
       facts: computed(() => AppState.facts)
     }

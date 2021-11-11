@@ -2,7 +2,7 @@
   <div class="Cat card-container border-0 col-4 p-2 bg-transparent text-light py-5">
     <div class=" row justify-content-center">
       <div class="cat-image col-3 mr-0 pb-0">
-        <img :src="catImage + indexProp" class="img-fluid rounded">
+        <img :src="catImage + index" class="img-fluid rounded">
       </div>
       <div class="col-10 bg-primary rounded shadow-sm p-3" @click="getBigFact(fact.id)">
         <div class="row">
@@ -22,24 +22,23 @@
 </template>
 
 <script>
-import { computed, onMounted, ref } from 'vue'
-import { catService } from '../services/CatService'
+import { onMounted, ref } from 'vue'
+import { catService } from '../services/CatsService'
 import { AppState } from '../AppState'
-import { useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 export default {
   name: 'CatComponent',
-  props: { factProp: { type: Object, required: true }, indexProp: { type: Number, required: true } },
+  props: { fact: { type: Object, required: true }, index: { type: Number, required: true } },
   setup(props) {
     const catImage = ref('')
-    const router = useRouter()
-    onMounted(() => setTimeout(() => { catImage.value = 'https://thiscatdoesnotexist.com/?v= ' }, 1150 * props.indexProp - 1))
+    const route = useRoute()
+    onMounted(() => setTimeout(() => { catImage.value = 'https://thiscatdoesnotexist.com/?v= ' }, 1150 * props.index - 1))
     return {
       catImage,
-      fact: computed(() => props.factProp),
       async getBigFact(id) {
         await catService.getCatPicture()
         AppState.activeFact = this.fact
-        router.push({ name: 'FactPage', params: { id: id } })
+        route.push({ name: 'FactPage', params: { id: id } })
       }
     }
   }

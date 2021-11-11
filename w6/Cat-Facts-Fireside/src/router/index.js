@@ -14,7 +14,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/facts/:id',
+    path: '/facts/id',
     name: 'FactPage',
     component: ActiveFactPage
   },

@@ -13,8 +13,6 @@ export default {
     return {
       appState: computed(() => AppState)
     }
-  },
-  components: {
   }
 }
 </script>

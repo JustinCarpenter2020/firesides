@@ -1,6 +1,19 @@
 Debugging Catuuurday
 
 * Home page - prop passes whole collection
-* CatService - exporting as catsService instead of catService
+
+* CatService - exporting as catService instead of catsService
+
+* router push on cats component is route.push
+
+*lowercase s in Appstate in catsService
+
+*Axios service missing the s in https
+
 * CatComponent - Cat data is not referencing the state before it references the fact incorrectly
-* router push on cats component
+
+*Router missing the : infront of Id
+
+*catPicture is catPictue in the AppState
+
+*catsService get all cats is a put method
