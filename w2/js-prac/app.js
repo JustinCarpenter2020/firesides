@@ -98,7 +98,7 @@ function evenOrOdd(num){
       console.log(true)
     }
     
-    //no need to do if statement if youre just doing true/false 
+    //no need to do if statement if you're just doing true/false 
     console.log(i%2 == 0)
   }
 }
@@ -169,6 +169,7 @@ let basket = [
       }
       
     }
+    console.log(total)
 
     // items.forEach(item=>{
     //   switch(item.type){
@@ -184,7 +185,6 @@ let basket = [
     //       break;
     //   }
     //   })
-      console.log(total)
   }
   
   cartTotal(basket)

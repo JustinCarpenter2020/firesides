@@ -39,14 +39,14 @@
 
 <script>
 import { AppState } from '../AppState'
-import { computed, reactive } from 'vue'
+import { computed } from 'vue'
 export default {
   name: 'ActiveFact',
   setup() {
-    const state = reactive({
-
-    })
-    return { state, fact: computed(() => AppState.activeFact), picture: computed(() => AppState.catPicture) }
+    return {
+      fact: computed(() => AppState.activeFact),
+      picture: computed(() => AppState.catPicture)
+    }
   }
 }
 </script>

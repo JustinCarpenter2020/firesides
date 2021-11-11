@@ -1,11 +1,13 @@
 import { AppState } from '../AppState'
 import { api, pictureApi } from './AxiosService'
-import { catNameGenerator, generateId } from './utils'
+import { generateId } from './utils'
+// @ts-ignore
+import * as catGenerator from 'catid'
 
 class CatService {
   async getFacts() {
     try {
-      const res = await api.get('/facts?limit=2')
+      const res = await api.get('/facts?limit=20')
       AppState.facts = res.data.data.map(cat => new Cat(cat))
       console.log(AppState.facts)
     } catch (err) {
@@ -41,7 +43,7 @@ export const catService = new CatService()
 class Cat {
   constructor(data) {
     this.text = data.fact
-    this.name = catNameGenerator()
+    this.name = catGenerator.getName()
     this.stars = Math.round(Math.random() * 5)
     this.id = generateId()
   }

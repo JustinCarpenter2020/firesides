@@ -2,18 +2,18 @@
   <div class="Cat card-container border-0 col-4 p-2 bg-transparent text-light py-5">
     <div class=" row justify-content-center">
       <div class="cat-image col-3 mr-0 pb-0">
-        <img :src="state.catImage + indexProps" class="img-fluid rounded">
+        <img :src="catImage + indexProp" class="img-fluid rounded">
       </div>
-      <div class="col-10 bg-primary rounded shadow-sm p-3" @click="getBigFact(state.fact.id)">
+      <div class="col-10 bg-primary rounded shadow-sm p-3" @click="getBigFact(fact.id)">
         <div class="row">
           <h5 class="col-12 border-bottom pt-0 pb-1">
-            {{ state.fact.name }}
+            {{ fact.name }}
           </h5>
           <div class="col-12 p-2">
-            {{ state.fact.text }}
+            {{ fact.text }}
           </div>
           <div class="col-12">
-            <i v-for="(star, i) in state.fact.stars" class="bi bi-star" :key="i"></i>
+            <i v-for="(star, i) in fact.stars" class="bi bi-star" :key="i"></i>
           </div>
         </div>
       </div>
@@ -22,30 +22,26 @@
 </template>
 
 <script>
-import { reactive, computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { catService } from '../services/CatService'
 import { AppState } from '../AppState'
 import { useRouter } from 'vue-router'
 export default {
   name: 'CatComponent',
-  props: ['factProp', 'indexProp'],
+  props: { factProp: { type: Object, required: true }, indexProp: { type: Number, required: true } },
   setup(props) {
+    const catImage = ref('')
     const router = useRouter()
-    const state = reactive({
+    onMounted(() => setTimeout(() => { catImage.value = 'https://thiscatdoesnotexist.com/?v= ' }, 1150 * props.indexProp - 1))
+    return {
+      catImage,
       fact: computed(() => props.factProp),
-      catImage: ''
-
-    })
-    async function getBigFact(id) {
-      await catService.getCatPicture()
-      AppState.activeFact = state.fact
-      router.push({ name: 'FactPage', params: { id: id } })
+      async getBigFact(id) {
+        await catService.getCatPicture()
+        AppState.activeFact = this.fact
+        router.push({ name: 'FactPage', params: { id: id } })
+      }
     }
-    function getUniqueCat() {
-      setTimeout(() => { state.catImage = 'https://thiscatdoesnotexist.com/?v= ' }, 1150 * props.indexProp - 1)
-    }
-    onMounted(() => getUniqueCat())
-    return { state, getBigFact, getUniqueCat }
   }
 }
 </script>
