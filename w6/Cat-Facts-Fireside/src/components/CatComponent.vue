@@ -23,22 +23,22 @@
 
 <script>
 import { onMounted, ref } from 'vue'
-import { catService } from '../services/CatsService'
+import { catsService } from '../services/CatsService'
 import { AppState } from '../AppState'
-import { useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 export default {
   name: 'CatComponent',
   props: { fact: { type: Object, required: true }, index: { type: Number, required: true } },
   setup(props) {
     const catImage = ref('')
-    const route = useRoute()
+    const router = useRouter()
     onMounted(() => setTimeout(() => { catImage.value = 'https://thiscatdoesnotexist.com/?v= ' }, 1150 * props.index - 1))
     return {
       catImage,
       async getBigFact(id) {
-        await catService.getCatPicture()
-        AppState.activeFact = this.fact
-        route.push({ name: 'FactPage', params: { id: id } })
+        await catsService.getCatPicture()
+        AppState.activeFact = props.fact
+        router.push({ name: 'FactPage', params: { id: id } })
       }
     }
   }

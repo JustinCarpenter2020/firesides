@@ -7,5 +7,5 @@ export const AppState = reactive({
   profile: {},
   facts: [],
   activeFact: {},
-  catPictue: ''
+  catPicture: ''
 })

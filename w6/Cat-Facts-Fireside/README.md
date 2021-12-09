@@ -10,8 +10,6 @@ Debugging Catuuurday
 
 *Axios service missing the s in https
 
-* CatComponent - Cat data is not referencing the state before it references the fact incorrectly
-
 *Router missing the : infront of Id
 
 *catPicture is catPictue in the AppState
